@@ -1,1 +1,92 @@
-sdfsdf
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Recommended meta tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<!-- PyScript CSS -->
+	<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+	<!-- This script tag bootstraps PyScript -->
+	<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+
+<style>
+	.master-layout{
+		width: 880px;
+	}
+
+	.title{
+		margin: 1px;
+		border: 1px;
+		padding: 1px;
+		font-size: 80%;
+	}
+
+	.graph-block {
+		display: grid;
+		grid-template-columns: 800px 150px;
+		}
+
+	.graph-display {
+		}
+	
+	.graph-settings {
+		align-items: center;
+		font-size: 75%;
+		}
+
+	.blank-row {
+		display: inline-block;
+		width: 10px;
+		}
+			
+</style>
+
+<body>
+<div>Upload a .csv spectrum file: <br></div>	
+<div class="row overflow-hidden" id="content">
+    <div class="col mh-100 float-left" id="main">
+        <div id="fileinput"></div>
+        <input type="file" name="upload" id="upload">
+    </div>
+</div>
+
+<div><br>If the graph does not display, hit the 'Update graph settings' button.</div>
+<div class="graph-block"> 
+	<div class="graph-display" id="graph"></div>
+	<div class="graph-settings">
+		<p><br></p>
+		<p>You can change any of the graph scale values:<br></p>
+		<table border=2>
+		  <tr>
+			<td  colspan="2" style="text-align: center;"><b>Graph Settings</b></td>
+		  </tr>
+		  <tr>
+			<td><label for="xmin">xmin</label></td>
+			<td><input type="xmin" id="xmin" size=8/></td>
+		  </tr>
+		  <tr> 
+			<td><label for="xmax">xmax</label></td>
+			<td><input type="xmax" id="xmax" size=8/></td>
+		  </tr>
+		  <tr>
+			<td><label for="ymin">ymin</label></td>
+			<td><input type="ymin" id="ymin" size=8/></td>
+		  </tr>
+		  <tr> 
+			<td><label for="ymax">ymax</label></td>
+			<td><input type="ymax" id="ymax" size=8/></td>
+		  </tr>
+		</table>
+		<button id="submit-button" type="submit" py-click="processFile">Update graph settings</button>
+	</div>
+</div>
+
+<section class="pyscript">
+	<script type="py" src="./main.py" config="./pyscript.toml"></script>
+</section>
+
+
+</body>
+</html>
+
